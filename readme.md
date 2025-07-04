@@ -25,7 +25,7 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 - [x] Auto-create database and tables
 - [ ] Save user profile with photo
 - [ ] Add post with image/video/text
-- [ ] User registration and login
+- [x] User registration and login
 - [ ] Password security and input check
 - [ ] Likes, comments, follow
 - [ ] Feed filtered by age group
@@ -55,3 +55,16 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 - [ ] Admin moderation panel
 - [ ] Dark mode
 - [ ] PWA (installable app)
+
+## 🚀 Progress Showcase
+
+Here are some of the features/screens we've completed so far:
+
+| Feature                     | Screenshot                         |
+|----------------------------|-------------------------------------|
+| 📝 Registration Page        | ![Register](https://i.ibb.co/d0BJr9Nj/Screenshot-342.png) |
+| 🔐 Login Page               | ![Login](https://i.ibb.co/JFn21mLw/Screenshot-343.png)        |
+| 🧑‍💼 Dashboard Layout        | _Coming Soon..._     
+| 🧓 Age-Based Feed Design    | _Coming Soon..._                    |
+| 📸 Post Upload UI           | _Coming Soon..._                    |
+
