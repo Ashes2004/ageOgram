@@ -20,15 +20,16 @@ $dbName = $config['DB_NAME'];
 $tables = [
   "users" => "
     CREATE TABLE users (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      username VARCHAR(50) NOT NULL UNIQUE,
-      password VARCHAR(50) NOT NULL ,
-      email VARCHAR(100) UNIQUE,
-      age INT,
-      profile_photo VARCHAR(255),
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-  ",
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    dob DATE,
+    is_verified BOOLEAN DEFAULT FALSE,
+    profile_photo VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+ ",
   "posts" => "
     CREATE TABLE posts (
       id INT AUTO_INCREMENT PRIMARY KEY,
