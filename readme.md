@@ -16,3 +16,42 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 
 🚧 **Project Status**: In development  
 🛠️ **Tech Stack**: PHP, MySQL, Vanilla JavaScript, HTML, CSS
+
+
+## ✅ TODO List (Simplified)
+
+### 🔌 Backend
+- [x] Connect to MySQL using `.env`
+- [x] Auto-create database and tables
+- [ ] Save user profile with photo
+- [ ] Add post with image/video/text
+- [ ] User registration and login
+- [ ] Password security and input check
+- [ ] Likes, comments, follow
+- [ ] Feed filtered by age group
+
+### 🖼️ Media
+- [ ] Upload image/video in one input
+- [ ] Detect type (image or video)
+- [ ] Optimize/compress media
+- [ ] Show preview before upload
+
+### 💻 UI
+- [ ] Dashboard layout (based on screenshot)
+- [ ] Mobile-friendly design
+- [ ] Feed cards by age
+- [ ] User profile view
+- [ ] Success popup after post
+
+### 🔐 Security
+- [x] Hide DB password with `.env`
+- [ ] Validate uploads (type/size)
+- [ ] Protect forms (CSRF)
+- [ ] Use prepared SQL queries
+
+### 🌟 Future Ideas
+- [ ] AI-based post suggestions
+- [ ] Reels/short video support
+- [ ] Admin moderation panel
+- [ ] Dark mode
+- [ ] PWA (installable app)
