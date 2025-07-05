@@ -24,6 +24,7 @@ $tables = [
     Name VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100) UNIQUE,
+    bio TEXT DEFAULT NULL,
     dob DATE,
     is_verified BOOLEAN DEFAULT FALSE,
     profile_photo VARCHAR(255),
@@ -38,7 +39,6 @@ $tables = [
       media_url VARCHAR(255),
       media_type ENUM('image', 'video', 'none') DEFAULT 'none',
       tags VARCHAR(255),
-      age_category ENUM('Teen', 'Young Adult', 'Adult', 'Senior'),
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )
