@@ -65,6 +65,6 @@ Here are some of the features/screens we've completed so far:
 | 📝 Registration Page        | ![Register](https://i.ibb.co/d0BJr9Nj/Screenshot-342.png) |
 | 🔐 Login Page               | ![Login](https://i.ibb.co/JFn21mLw/Screenshot-343.png)        |
 | 🧑‍💼 Dashboard Layout        |  ![Dashboard](https://i.ibb.co/cSh5vNRF/Screenshot-344.png) 
-| 🧓 Age-Based Feed Design    | _Coming Soon..._                    |
-| 📸 Post Upload UI           | _Coming Soon..._                    |
+| 📸 Post Upload UI           | ![Post Upload](https://i.ibb.co/ynqmBqBm/Screenshot-347.png)   |
+| 📸 Post Vew         | ![Post View](https://i.ibb.co/KxMDjHWY/Screenshot-346.png)   |
 

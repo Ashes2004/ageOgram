@@ -104,9 +104,140 @@ if (!$posts) {
                       <!-- Post Media -->
                       <div class="post-media cursor-pointer" onclick="openModal(<?= $post['id'] ?>)">
                           <?php if ($post['media_type'] === 'video'): ?>
-                              <video class="w-full h-auto max-h-96 object-cover bg-gray-100" controls>
-                                  <source src="../<?= htmlspecialchars($post['media_url']) ?>" type="video/mp4">
-                              </video>
+                              <div class="relative group w-full">
+                      <!-- Video Element -->
+                      <video 
+                        class="w-full h-auto max-h-96 object-cover bg-gray-100" 
+                        id="premiumVideo"
+                        loop
+                        muted
+                        playsinline
+                      >
+                        <source src="../<?= htmlspecialchars($post['media_url']) ?>" type="video/mp4">
+                      </video>
+                      
+                      <!-- Tap to play overlay -->
+                      <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                        <div id="playIcon" class="text-white opacity-0 transition-opacity duration-200">
+                          <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      <!-- Mute/Unmute Button -->
+                      <div class="absolute bottom-3 right-3 bg-black/60 text-white p-2 rounded-full backdrop-blur-sm cursor-pointer hover:bg-black/80 transition-colors" id="muteBtn">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" id="muteIcon">
+                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                        </svg>
+                      </div>
+                      
+                      <!-- Progress indicator -->
+                      <div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                        <div id="progressBar" class="bg-white h-full transition-all duration-100" style="width: 0%"></div>
+                      </div>
+                    </div>
+
+                    <script>
+                    const video = document.getElementById('premiumVideo');
+                    const playIcon = document.getElementById('playIcon');
+                    const progressBar = document.getElementById('progressBar');
+                    const muteBtn = document.getElementById('muteBtn');
+                    const muteIcon = document.getElementById('muteIcon');
+                    const container = video.parentElement;
+
+                    let isPlaying = false;
+
+                    // Tap to play/pause
+                    container.addEventListener('click', (e) => {
+                      e.preventDefault();
+                      // Don't toggle play/pause if clicking on mute button
+                      if (e.target.closest('#muteBtn')) return;
+                      
+                      if (isPlaying) {
+                        video.pause();
+                        playIcon.style.opacity = '1';
+                        setTimeout(() => playIcon.style.opacity = '0', 1000);
+                      } else {
+                        video.play();
+                        playIcon.style.opacity = '0';
+                      }
+                      isPlaying = !isPlaying;
+                    });
+
+                    // Mute/Unmute functionality
+                    muteBtn.addEventListener('click', (e) => {
+                      e.stopPropagation();
+                      video.muted = !video.muted;
+                      updateMuteIcon();
+                    });
+
+                    function updateMuteIcon() {
+                      if (video.muted) {
+                        muteIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+                      } else {
+                        muteIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+                      }
+                    }
+
+                    // Update progress bar
+                    video.addEventListener('timeupdate', () => {
+                      const progress = (video.currentTime / video.duration) * 100;
+                      progressBar.style.width = progress + '%';
+                    });
+
+                    // Reset progress when video ends
+                    video.addEventListener('ended', () => {
+                      progressBar.style.width = '0%';
+                      isPlaying = false;
+                    });
+
+                    // Pause video when scrolling
+                    let scrollTimeout;
+                    window.addEventListener('scroll', () => {
+                      if (isPlaying) {
+                        video.pause();
+                        playIcon.style.opacity = '1';
+                        setTimeout(() => playIcon.style.opacity = '0', 1000);
+                        isPlaying = false;
+                      }
+                    });
+
+                    // Auto-play when video comes into view
+                    const observer = new IntersectionObserver((entries) => {
+                      entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                          video.play();
+                          isPlaying = true;
+                          playIcon.style.opacity = '0';
+                        } else if (!entry.isIntersecting && isPlaying) {
+                          video.pause();
+                          isPlaying = false;
+                        }
+                      });
+                    }, { threshold: 0.5 });
+
+                    observer.observe(video);
+
+                    // Hover to play/pause
+                    container.addEventListener('mouseenter', () => {
+                      if (!isPlaying) {
+                        video.play();
+                        isPlaying = true;
+                        playIcon.style.opacity = '0';
+                      }
+                    });
+
+                    container.addEventListener('mouseleave', () => {
+                      if (isPlaying) {
+                        video.pause();
+                        isPlaying = false;
+                      }
+                    });
+
+                    // Initialize mute icon
+                    updateMuteIcon();
+                    </script>
                           <?php elseif ($post['media_type'] === 'image'): ?>
                               <img src="../<?= htmlspecialchars($post['media_url']) ?>" class="w-full h-auto max-h-96 object-cover bg-gray-100" alt="Post image" />
                           <?php endif; ?>
