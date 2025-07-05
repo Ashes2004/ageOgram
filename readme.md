@@ -68,4 +68,3 @@ Here are some of the features/screens we've completed so far:
 | 🧓 Age-Based Feed Design    | _Coming Soon..._                    |
 | 📸 Post Upload UI           | _Coming Soon..._                    |
 
-https://i.ibb.co/cSh5vNRF/Screenshot-344.png

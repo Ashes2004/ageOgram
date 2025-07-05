@@ -1,5 +1,5 @@
 <?php
-// logout.php
+
 
 function logout() {
     session_start();
