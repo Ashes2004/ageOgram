@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 
 <header class="flex items-center justify-between bg-white whitespace-nowrap border-b border-gray-200 px-10 py-3   fixed top-0 z-50 w-screen">
   <!-- Left: Logo + Brand -->
-  <div class="flex items-center gap-3 text-[#111418]">
+  <div class="flex items-center gap-3 text-[#111418]"  onclick="window.location.href = '/AgeOgram/user/dashboard.php';">
     <div class=" text-blue-600">
       <img src="../assets/images/AgeOgram.png" alt="AgeOgram Logo" class="w-10 h-9" />
     </div>
