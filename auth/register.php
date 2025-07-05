@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
     }
 
     // Default image path
-    $profilePhoto = "../assets/images/defaultDP.jpeg";
+    $profilePhoto = "../assets/images/defaultDP.jpg";
 
     // Hash password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

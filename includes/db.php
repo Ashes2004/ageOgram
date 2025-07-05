@@ -24,6 +24,7 @@ $tables = [
     Name VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100) UNIQUE,
+    bio TEXT DEFAULT NULL,
     dob DATE,
     is_verified BOOLEAN DEFAULT FALSE,
     profile_photo VARCHAR(255),
@@ -52,7 +53,27 @@ $tables = [
       FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )
-  "
+  ",
+  "follows" => "
+    CREATE TABLE follows (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      follower_id INT,
+      followed_id INT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (follower_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (followed_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+    " , 
+    "likes" => "
+    CREATE TABLE likes (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      post_id INT,
+      user_id INT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )"
+
 ];
 
 // 1. Connect without DB first

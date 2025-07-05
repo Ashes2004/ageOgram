@@ -31,13 +31,13 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 - [ ] Feed filtered by age group
 
 ### 🖼️ Media
-- [ ] Upload image/video in one input
-- [ ] Detect type (image or video)
+- [x] Upload image/video in one input
+- [x] Detect type (image or video)
 - [ ] Optimize/compress media
-- [ ] Show preview before upload
+- [x] Show preview before upload
 
 ### 💻 UI
-- [ ] Dashboard layout (based on screenshot)
+- [x] Dashboard layout (based on screenshot)
 - [ ] Mobile-friendly design
 - [ ] Feed cards by age
 - [ ] User profile view
@@ -64,7 +64,8 @@ Here are some of the features/screens we've completed so far:
 |----------------------------|-------------------------------------|
 | 📝 Registration Page        | ![Register](https://i.ibb.co/d0BJr9Nj/Screenshot-342.png) |
 | 🔐 Login Page               | ![Login](https://i.ibb.co/JFn21mLw/Screenshot-343.png)        |
-| 🧑‍💼 Dashboard Layout        | _Coming Soon..._     
+| 🧑‍💼 Dashboard Layout        |  ![Dashboard](https://i.ibb.co/cSh5vNRF/Screenshot-344.png) 
 | 🧓 Age-Based Feed Design    | _Coming Soon..._                    |
 | 📸 Post Upload UI           | _Coming Soon..._                    |
 
+https://i.ibb.co/cSh5vNRF/Screenshot-344.png
