@@ -171,7 +171,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                     name="content"
                                     placeholder="Write a caption..."
                                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border border-[#dbe0e6] bg-white focus:border-[#dbe0e6] min-h-36 placeholder:text-[#60758a] p-[15px] text-base font-normal leading-normal"
-                                    required
+                                   
                                 ></textarea>
                             </label>
                         </div>
