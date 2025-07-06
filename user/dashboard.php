@@ -36,7 +36,7 @@ if (!$posts) {
                     <?= htmlspecialchars($message) ?>
                 </div>
                 <?php else: ?>
-              
+                <!-- Get all recent posts  -->
                 <?php include_once 'recentPostForDashboard.php'?>
                 <?php endif; ?>
             </div>

@@ -23,12 +23,12 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 ### 🔌 Backend
 - [x] Connect to MySQL using `.env`
 - [x] Auto-create database and tables
-- [ ] Save user profile with photo
-- [ ] Add post with image/video/text
+- [X] Save user profile with photo
+- [X] Add post with image/video
 - [x] User registration and login
-- [ ] Password security and input check
+- [X] Password security and input check
 - [ ] Likes, comments, follow
-- [ ] Feed filtered by age group
+- [X] Feed filtered by age group
 
 ### 🖼️ Media
 - [x] Upload image/video in one input
@@ -40,7 +40,7 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 - [x] Dashboard layout (based on screenshot)
 - [ ] Mobile-friendly design
 - [ ] Feed cards by age
-- [ ] User profile view
+- [X] User profile view
 - [ ] Success popup after post
 
 ### 🔐 Security
@@ -59,12 +59,14 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 ## 🚀 Progress Showcase
 
 Here are some of the features/screens we've completed so far:
+| Feature                   | Screenshot                                                                 |
+|--------------------------|----------------------------------------------------------------------------|
+| 📝 Registration Page      | ![Registration Page](https://i.ibb.co/d0BJr9Nj/Screenshot-342.png)         |
+| 🔐 Login Page             | ![Login Page](https://i.ibb.co/JFn21mLw/Screenshot-343.png)                |
+| 🧑‍💼 Dashboard Layout      | ![Dashboard Layout](https://i.ibb.co/cSh5vNRF/Screenshot-344.png)            |
+| 📸 Post Upload UI         | ![Post Upload UI](https://i.ibb.co/ynqmBqBm/Screenshot-347.png)            |
+| 🖼️ Post View              | ![Post View](https://i.ibb.co/KxMDjHWY/Screenshot-346.png)                 |
+| 👤 Profile View           | ![Profile View](https://i.ibb.co/p6vnYhWX/Screenshot-350.png)              |
+| ✏️ Update Profile         | ![Update Profile](https://i.ibb.co/YBR3y1hZ/Screenshot-351.png)            |
 
-| Feature                     | Screenshot                         |
-|----------------------------|-------------------------------------|
-| 📝 Registration Page        | ![Register](https://i.ibb.co/d0BJr9Nj/Screenshot-342.png) |
-| 🔐 Login Page               | ![Login](https://i.ibb.co/JFn21mLw/Screenshot-343.png)        |
-| 🧑‍💼 Dashboard Layout        |  ![Dashboard](https://i.ibb.co/cSh5vNRF/Screenshot-344.png) 
-| 📸 Post Upload UI           | ![Post Upload](https://i.ibb.co/ynqmBqBm/Screenshot-347.png)   |
-| 📸 Post Vew         | ![Post View](https://i.ibb.co/KxMDjHWY/Screenshot-346.png)   |
 
