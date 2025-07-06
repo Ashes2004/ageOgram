@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $full_path = $target_dir . $filename;
 
                 if (move_uploaded_file($file['tmp_name'], $full_path)) {
-                    $profile_photo = $full_path;
+                    $profile_photo = str_replace('../', '', $full_path);
+                    $profile_photo = htmlspecialchars($profile_photo, ENT_QUOTES, 'UTF-8');
                     $update_photo = true;
                 } else {
                     $error_message = "Failed to upload image. Please try again.";
@@ -139,7 +140,7 @@ $profile_photo = htmlspecialchars($user['profile_photo'], ENT_QUOTES, 'UTF-8');
                             <div class="text-center">
                                 <div class="mb-6">
                                     <img id="photoPreview" 
-                                         src="<?php echo !empty($profile_photo) ?  $profile_photo : '/AgeOgram/images/default-avatar.png'; ?>" 
+                                         src="<?php echo !empty($profile_photo) ?  '../'. $profile_photo : '/AgeOgram/images/default-avatar.png'; ?>" 
                                          alt="Profile Photo" 
                                          class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 </div>

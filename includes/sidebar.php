@@ -8,7 +8,7 @@ function isActive($page) {
 }
 ?>
 
-<div class="layout-content-container flex px-8 h-full flex-col  right-0">
+<div class="layout-content-container flex  h-full flex-col  right-0">
   <div class="flex h-full min-h-[700px] flex-col justify-between bg-white p-4">
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-2">

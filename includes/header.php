@@ -7,15 +7,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
- $user_id = $_SESSION['user_id'];
-require_once '../includes/db.php';
+$user_header_id = $_SESSION['user_id'];
+require_once 'db.php';
 // Fetch user data
 $stmt = $conn->prepare("SELECT  profile_photo FROM users WHERE id = ?");
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("i", $user_header_id);
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+    $user_header = $result->fetch_assoc();
 } else {
     echo "User not found.";
     exit();
@@ -65,9 +65,9 @@ if ($result->num_rows > 0) {
     <!-- User Profile Avatar -->
      <?php if(isset($_SESSION['user_id'])): ?>
     <div class="relative">
-      <div
+      <div onclick="window.location.href = '/AgeOgram/user/profile.php?id=<?php echo $user_header_id ; ?>';"
         class="w-10 h-10 rounded-full bg-center bg-cover bg-no-repeat border-2 border-gray-300 shadow-sm hover:ring-2 hover:ring-blue-500 transition cursor-pointer"
-        style='background-image: url("<?php echo $user['profile_photo']; ?>");'
+        style='background-image: url("../<?php echo $user_header['profile_photo']; ?>");'
         title="View Profile"
      ></div>
     </div>

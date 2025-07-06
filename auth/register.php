@@ -169,7 +169,7 @@ if (isset($_POST['submit'])) {
     } else {
         die("No image uploaded or upload error.");
     }
-
+    $profilePhoto = str_replace('../', '', $profilePhoto); // Ensure the path is relative to the web root 
     $stmt->bind_param("sssis", $name, $email, $hashedPassword, $age, $profilePhoto);
     
     if ($stmt->execute()) {

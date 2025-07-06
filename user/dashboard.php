@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 require_once '../functions/suggestPost.php';
 require_once '../includes/db.php';
 
-$posts = suggestPost($conn);
+$posts = suggestPostForDashboard($conn);
 $message = "";
 if (!$posts) {
     $message = "No posts found.";
@@ -81,8 +81,8 @@ if (!$posts) {
                       <div class="flex items-center justify-between p-4">
                           <div class="flex items-center gap-3">
                               <div class="relative">
-                                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
-                                      <img src="<?= htmlspecialchars($post['profile_photo']) ?>" class="w-full h-full rounded-full border-2 border-white object-cover" alt="User" />
+                                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 via-gray-500 to-blue-500 p-0.5">
+                                      <img src="../<?= htmlspecialchars($post['profile_photo']) ?>" class="w-full h-full rounded-full border-2 border-white object-cover" alt="User" />
                                   </div>
                               </div>
                               <div>
@@ -104,10 +104,10 @@ if (!$posts) {
                       <!-- Post Media -->
                       <div class="post-media cursor-pointer" onclick="openModal(<?= $post['id'] ?>)">
                           <?php if ($post['media_type'] === 'video'): ?>
-                              <div class="relative group w-full">
+                              <div class="relative group w-full ">
                       <!-- Video Element -->
                       <video 
-                        class="w-full h-auto max-h-96 object-cover bg-gray-100" 
+                        class="w-full h-auto max-h-96 object-cover bg-gray-100 rounded-md" 
                         id="premiumVideo"
                         loop
                         muted
@@ -239,7 +239,7 @@ if (!$posts) {
                     updateMuteIcon();
                     </script>
                           <?php elseif ($post['media_type'] === 'image'): ?>
-                              <img src="../<?= htmlspecialchars($post['media_url']) ?>" class="w-full h-auto max-h-96 object-cover bg-gray-100" alt="Post image" />
+                              <img src="../<?= htmlspecialchars($post['media_url']) ?>" class="w-full h-auto max-h-96 object-cover bg-gray-100 rounded-md" alt="Post image" />
                           <?php endif; ?>
                       </div>
 
@@ -425,11 +425,17 @@ if (!$posts) {
     <h2 class="text-[#111418] text-3xl font-bold px-4 pb-3 ">Trending Tags</h2>
     <div class="flex gap-3 p-3 flex-wrap pr-4">
       <?php
-        $tags = ['#travel', '#photography', '#foodie', '#fitness', '#art'];
+         require_once '../functions/trendingTags.php';
+         $user_id_for_tags = $_SESSION['user_id'];
+     
+    
+        $tags = [];
+          
+        $tags = getTrendingTagsByAgeCategory($conn , $user_id_for_tags );
         foreach ($tags as $tag):
       ?>
-        <div class="flex h-8 items-center justify-center rounded-lg bg-[#f0f2f5] px-4">
-          <p class="text-[#111418] text-md font-bold"><?= $tag ?></p>
+        <div class="flex h-8 items-center justify-center rounded-lg bg-[#f0f2f5] px-4 cursor-pointer" onclick = "window.location.href = '/AgeOgram/explore/tags.php?tag=<?php echo str_replace('#' , '' , $tag) ;?>'">
+          <p class="text-[#111418] text-md font-bold">#<?= $tag ?></p>
         </div>
       <?php endforeach; ?>
     </div>
@@ -455,7 +461,7 @@ if (!$posts) {
       </div>
     <?php endforeach; ?>
   </div>
-    <div class="w-1/3 h-full">
+    <div class="w-1/3 h-full px-8">
     <?php require_once '../includes/sidebar.php'; ?>
   </div>
 </div>
