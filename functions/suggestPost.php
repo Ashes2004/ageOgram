@@ -1,5 +1,5 @@
 <?php
-function suggestPost($conn) {
+function suggestPostForDashboard($conn) {
 
     if (!isset($_SESSION['user_id'])) {
         header("Location: /AgeOgram/auth/login.php");
@@ -76,4 +76,11 @@ function suggestPost($conn) {
     $stmt->close();
     return $posts;
 }
+
+
+
+
+
+
+
 ?>
