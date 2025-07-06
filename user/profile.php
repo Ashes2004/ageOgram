@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
     
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 min-h-screen" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+<body class=" min-h-screen" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
     <!-- Include header.php here -->
     <?php include_once '../includes/header.php'; ?>
     
@@ -67,7 +67,7 @@ if ($result->num_rows > 0) {
             
             <!-- User Info -->
                 <h1 class="text-3xl font-bold text-gray-900 mb-1"><?php echo htmlspecialchars($user['name']); ?></h1>
-                <p class="text-gray-600 text-lg mb-1"><?php $age = date_diff(date_create($user['dob']), date_create('today'))->y; echo $age; ?> years old</p>
+                <p class="text-gray-600 text-md mb-1 opacity-70"><?php $age = date_diff(date_create($user['dob']), date_create('today'))->y; echo $age; ?> years old</p>
                 <p class="text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
                 <?php echo htmlspecialchars($user['bio']); ?>
                 </p>
@@ -76,11 +76,11 @@ if ($result->num_rows > 0) {
             <div class="flex justify-center gap-4 mb-8">
                 <?php if ($user_id == $current_user_id): ?>
                     <a href="/AgeOgram/user/updateProfile.php" 
-                       class="px-8 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
+                       class="px-8 py-3 bg-gray-300 text-gray-800 opacity-70 rounded-lg font-bold hover:bg-gray-500 transition-colors duration-200">
                         Edit Profile
                     </a>
                     <a href="/AgeOgram/auth/logout.php" 
-                       class="px-8 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors duration-200">
+                       class="px-10 py-3 bg-gray-300 text-gray-800 opacity-70 rounded-lg font-bold hover:bg-gray-500 transition-colors duration-200">
                         Logout
                     </a>
                 <?php else: ?>

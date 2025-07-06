@@ -98,23 +98,22 @@ $profile_photo = htmlspecialchars($user['profile_photo'], ENT_QUOTES, 'UTF-8');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile | AgeOgram</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     
-<div class="flex min-h-screen bg-gray-50">
+<div class="flex min-h-screen ">
     <!-- Sidebar -->
      <?php include '../includes/header.php'; ?>
-     <div  class = " mt-24 flex">
-    <?php include '../includes/sidebar.php'; ?>
+  
     
     <!-- Main Content -->
-    <div class="flex-1 ml-64 p-8">
-        <div class="max-w-4xl mx-auto">
+    <div class=" ml-64 p-6 mt-14">
+        <div class="w-full mx-auto">
             <!-- Page Header -->
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 mb-8 text-white">
+            <div class=" rounded-lg p-4 mb-2 text-black">
                 <h1 class="text-3xl font-bold mb-2">Update Profile</h1>
-                <p class="text-blue-100">Keep your information up to date</p>
+                <p class="text-gray-700">Keep your information up to date</p>
             </div>
 
             <!-- Success/Error Messages -->
@@ -131,9 +130,9 @@ $profile_photo = htmlspecialchars($user['profile_photo'], ENT_QUOTES, 'UTF-8');
             <?php endif; ?>
 
             <!-- Profile Update Form -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class=" rounded-lg  p-8">
                 <form action="" method="POST" enctype="multipart/form-data" id="profileForm">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Profile Photo Section -->
                         <div class="lg:col-span-1">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Profile Photo</h3>
@@ -208,7 +207,7 @@ $profile_photo = htmlspecialchars($user['profile_photo'], ENT_QUOTES, 'UTF-8');
 
                                 <div class="pt-4">
                                     <button type="submit" 
-                                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-300">
+                                            class="w-full bg-gray-800 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-300">
                                         <i class="fas fa-save mr-2"></i>Update Profile
                                     </button>
                                 </div>

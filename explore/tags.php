@@ -100,5 +100,7 @@ include_once '../includes/db.php';
     </head>
     <body class="bg-white pt-16">
         <?php include_once '../includes/header.php'; ?>
+
+        
 </body> 
 </html>    
