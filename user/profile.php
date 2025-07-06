@@ -1,5 +1,6 @@
  <?php
  include_once '../includes/db.php';
+ include_once '../functions/follow.php';
 session_start();
 if(!isset($_SESSION['user_id'])) {
     header('Location: /AgeOgram/auth/login.php');
@@ -9,6 +10,19 @@ if(!isset($_SESSION['user_id'])) {
 $current_user_id = $_SESSION['user_id'];
 
 $user_id = $_GET['id'];
+
+$is_following = false;
+
+$stmt = $conn->prepare("SELECT 1 FROM follows WHERE follower_id = ? AND followed_id = ?");
+$stmt->bind_param("ii", $current_user_id, $user_id);
+$stmt->execute();
+if ($stmt->get_result()->num_rows > 0) {
+    $is_following = true;
+}
+$stmt->close();
+
+
+
 
 // Corrected line here
 $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
@@ -34,7 +48,18 @@ if ($result->num_rows > 0) {
     $posts = [];
 }
 
- // Debugging line to check user data
+// Handle follow/unfollow actions
+if (isset($_GET['action']) && $user_id != $current_user_id) {
+    if ($_GET['action'] === 'follow') {
+        followUser($conn, $current_user_id, $user_id);
+    } elseif ($_GET['action'] === 'unfollow') {
+        unfollowUser($conn, $current_user_id, $user_id);
+    }
+    // Redirect to same page to prevent form resubmission and reload with updated state
+    header("Location: profile.php?id=" . $user_id);
+    exit();
+}
+
 
 ?>
 
@@ -84,14 +109,18 @@ if ($result->num_rows > 0) {
                         Logout
                     </a>
                 <?php else: ?>
-                    <a href="/AgeOgram/user/follow.php?user_id=<?php echo $user_id; ?>" 
-                       class="px-8 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
+                  <?php if ($is_following): ?>
+                <a href="?id=<?php echo $user_id;?>&action=unfollow" 
+                class="px-8 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-500 transition-colors duration-200">
+                    Unfollow
+                </a>
+                <?php else: ?>
+                    <a href="?id=<?php echo $user_id;?>&action=follow" 
+                    class="px-8 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
                         Follow
                     </a>
-                    <a href="/AgeOgram/user/message.php?user_id=<?php echo $user_id; ?>" 
-                       class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200">
-                        Message
-                    </a>
+                <?php endif; ?>
+
                 <?php endif; ?>
             </div>
         </div>
