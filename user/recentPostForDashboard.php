@@ -204,6 +204,7 @@
                               <img src="../<?= htmlspecialchars($post['media_url']) ?>" class="w-full h-auto max-h-96 object-cover bg-gray-100 rounded-md" alt="Post image" />
                           <?php endif; ?>
                       </div>
+                      
 
                       <!-- Post Actions -->
                       <div class="p-4">
@@ -242,6 +243,24 @@
                               <span class="font-semibold text-sm text-gray-900"><?= htmlspecialchars($post['name']) ?></span>
                               <span class="text-sm text-gray-900 ml-2"><?= nl2br(htmlspecialchars($post['content'])) ?></span>
                           </div>
+                          <?php if ($post['tags']): ?>
+                                    <div class="flex flex-wrap gap-1 mb-3">
+                                        <?php 
+                                        $tags = array_map('trim', explode(',', $post['tags']));
+                                        foreach (array_slice($tags, 0, 3) as $tag): 
+                                        ?>
+                                            <a href="/AgeOgram/explore/tags.php?tag=<?php echo htmlspecialchars($tag); ?>" 
+                                               class="text-xs text-blue-700 transition-colors">
+                                                #<?php echo htmlspecialchars($tag); ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                        <?php if (count($tags) > 3): ?>
+                                            <span class="text-xs text-gray-500 px-2 py-1">
+                                                +<?php echo count($tags) - 3; ?> more
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
                           <!-- Comments Preview -->
                           <div class="cursor-pointer" onclick="openModal(<?= $post['id'] ?>)">
