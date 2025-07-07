@@ -41,7 +41,7 @@ The goal of AgeOgram is to solve the "one-size-fits-all" content problem found i
 - [ ] Mobile-friendly design
 - [ ] Feed cards by age
 - [X] User profile view
-- [ ] Success popup after post
+- [X] Tag Based Post Filter
 
 ### 🔐 Security
 - [x] Hide DB password with `.env`
@@ -68,5 +68,7 @@ Here are some of the features/screens we've completed so far:
 | 🖼️ Post View              | ![Post View](https://i.ibb.co/KxMDjHWY/Screenshot-346.png)                 |
 | 👤 Profile View           | ![Profile View](https://i.ibb.co/p6vnYhWX/Screenshot-350.png)              |
 | ✏️ Update Profile         | ![Update Profile](https://i.ibb.co/YBR3y1hZ/Screenshot-351.png)            |
+|🖼️ Tags View          | ![Tags View    ](https://i.ibb.co/xKrs1MJJ/Screenshot-356.png)            |
+
 
 
