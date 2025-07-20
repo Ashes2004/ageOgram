@@ -1,6 +1,4 @@
-<?php
-// You must have $posts, $user_id, and $current_user_id available in the parent file
-?>
+
 
 <div class="max-w-4xl mx-auto">
     <?php if (count($posts) > 0): ?>

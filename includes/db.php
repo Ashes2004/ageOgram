@@ -83,12 +83,10 @@ if ($conn->connect_error) {
 }
 
 // 2. Check if DB exists
-$dbCheck = $conn->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$dbName'");
-if ($dbCheck->num_rows === 0) {
-    if (!$conn->query("CREATE DATABASE $dbName")) {
-        die("❌ Failed to create DB: " . $conn->error);
-    }
+if (!$conn->query("CREATE DATABASE IF NOT EXISTS `$dbName`")) {
+    die("❌ Failed to create DB: " . $conn->error);
 }
+
 
 // 3. Select DB
 $conn->select_db($dbName);
